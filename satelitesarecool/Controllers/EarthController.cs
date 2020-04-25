@@ -48,7 +48,7 @@ namespace satelitesarecool.Controllers
         {
             return View();
         }
-
+        //TODO: UPDATE SHOWIMAGE UI
         public IActionResult ShowImage(Location location)
         {
             return View(location);
