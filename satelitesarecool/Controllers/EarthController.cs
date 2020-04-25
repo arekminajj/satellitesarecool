@@ -23,25 +23,23 @@ namespace satelitesarecool.Controllers
                 location.Dim = 0.4f;
 
             HttpClient geolocationClient = new HttpClient();
-            var respond = geolocationClient.GetAsync("https://geocode.xyz/" + location.Place + "?json=1").ToString();
-            var geolocation = JsonConvert.DeserializeObject<GeolocationModel>(respond);
-                
-            
-            string url = "https://api.nasa.gov/planetary/earth/imagery?lon=" +
-                         geolocation.Longt +
-                         "&lat=" +
-                         geolocation.Latt +
-                         "&date=" +
-                         location.Year +
-                         "-" +
-                         location.Month +
-                         "-" +
-                         location.Day +
-                         "&dim=" +
-                         location.Dim +
-                         "&api_key=" +
-                         "DEMO_KEY";
-
+            var geoResponse = geolocationClient.GetAsync("https://geocode.xyz/" + location.Place + "?json=1").ToString();
+            var geolocation = JsonConvert.DeserializeObject<GeolocationModel>(geoResponse);
+            var url = "https://api.nasa.gov/planetary/earth/imagery?lon=" +
+                      geolocation.Longt +
+                      "&lat=" +
+                      geolocation.Latt +
+                      "&date=" +
+                      location.Year +
+                      "-" +
+                      location.Month +
+                      "-" +
+                      location.Day +
+                      "&dim=" +
+                      location.Dim +
+                      "&api_key=" +
+                      "DEMO_KEY";
+            location.Url = url;
             return View(location);
         }
 

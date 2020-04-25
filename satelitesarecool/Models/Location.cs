@@ -17,6 +17,6 @@ namespace satelitesarecool.Models
         [Required]
         public string Day { get; set; }
         public float Dim { get; set; }
-       
+        public string Url { get; set; }
     }
 }
