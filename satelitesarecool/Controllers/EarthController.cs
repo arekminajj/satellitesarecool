@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using satelitesarecool.Models;
 
 namespace satelitesarecool.Controllers
@@ -19,6 +21,12 @@ namespace satelitesarecool.Controllers
         {
             if (location.Dim == 0)
                 location.Dim = 0.4f;
+
+            HttpClient geolocationClient = new HttpClient();
+            var respond = geolocationClient.GetAsync("https://geocode.xyz/" + location.Place + "?json=1").ToString();
+            var geolocation = JsonConvert.DeserializeObject<GeolocationModel>(respond);
+                
+            
             string url = "https://api.nasa.gov/planetary/earth/imagery?lon=" +
                          "100.75" +
                          "&lat=" +
