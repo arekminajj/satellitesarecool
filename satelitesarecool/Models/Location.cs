@@ -11,11 +11,11 @@ namespace satelitesarecool.Models
         [Required]
         public string Place { get; set; }
         [Required]
-        public int Year { get; set; }
+        public string Year { get; set; }
         [Required]
-        public int Month { get; set; }
+        public string Month { get; set; }
         [Required]
-        public int Day { get; set; }
+        public string Day { get; set; }
         public float Dim { get; set; }
     }
 }

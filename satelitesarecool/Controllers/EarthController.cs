@@ -19,6 +19,18 @@ namespace satelitesarecool.Controllers
         {
             if (location.Dim == 0)
                 location.Dim = 0.4f;
+            string url = "https://api.nasa.gov/planetary/earth/imagery?lon=" +
+                         "100.75" +
+                         "&lat=" +
+                         "1.5" +
+                         "&date=" +
+                         location.Year +
+                         "-" +
+                         location.Month +
+                         "-" +
+                         location.Day +
+                         "&api_key=" +
+                         "DEMO_KEY";
             return View(location);
         }
 
