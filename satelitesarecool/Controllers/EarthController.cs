@@ -17,13 +17,13 @@ namespace satelitesarecool.Controllers
         }
 
         [HttpPost]
-        public IActionResult EarthImage([Bind("Place,Year,Month,Day,Dim")] Location location)
+        public async Task<IActionResult> EarthImage([Bind("Place,Year,Month,Day,Dim")] Location location)
         {
             if (location.Dim == 0)
                 location.Dim = 0.4f;
 
             HttpClient geolocationClient = new HttpClient();
-            var geoResponse = geolocationClient.GetAsync("https://geocode.xyz/" + location.Place + "?json=1").ToString();
+            var geoResponse = await geolocationClient.GetStringAsync("https://geocode.xyz/" + location.Place + "?json=1");
             var geolocation = JsonConvert.DeserializeObject<GeolocationModel>(geoResponse);
             var url = "https://api.nasa.gov/planetary/earth/imagery?lon=" +
                       geolocation.Longt +
@@ -40,13 +40,18 @@ namespace satelitesarecool.Controllers
                       "&api_key=" +
                       "DEMO_KEY";
             location.Url = url;
-            return View(location);
+            return RedirectToAction("ShowImage","Earth", location);
         }
 
         [HttpGet]
         public IActionResult EarthImage()
         {
             return View();
+        }
+
+        public IActionResult ShowImage(Location location)
+        {
+            return View(location);
         }
     }
 }
