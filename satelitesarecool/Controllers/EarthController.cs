@@ -28,17 +28,20 @@ namespace satelitesarecool.Controllers
                 
             
             string url = "https://api.nasa.gov/planetary/earth/imagery?lon=" +
-                         "100.75" +
+                         geolocation.Longt +
                          "&lat=" +
-                         "1.5" +
+                         geolocation.Latt +
                          "&date=" +
                          location.Year +
                          "-" +
                          location.Month +
                          "-" +
                          location.Day +
+                         "&dim=" +
+                         location.Dim +
                          "&api_key=" +
                          "DEMO_KEY";
+
             return View(location);
         }
 
