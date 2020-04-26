@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace satelitesarecool.Models
         [Required]
         public string Day { get; set; }
         public float Dim { get; set; }
+        [DisplayName("Photo")]
         public string Url { get; set; }
     }
 }
