@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using satelitesarecool.Models;
 
 namespace satelitesarecool.Controllers
@@ -24,11 +25,13 @@ namespace satelitesarecool.Controllers
 
             HttpClient geolocationClient = new HttpClient();
             var geoResponse = await geolocationClient.GetStringAsync("https://geocode.xyz/" + location.Place + "?json=1");
-            var geolocation = JsonConvert.DeserializeObject<GeolocationModel>(geoResponse);
+          
+            var geoLocation = JsonConvert.DeserializeObject<GeolocationModel>(geoResponse);
+            
             var url = "https://api.nasa.gov/planetary/earth/imagery?lon=" +
-                      geolocation.Longt +
+                      geoLocation.Longt +
                       "&lat=" +
-                      geolocation.Latt +
+                      geoLocation.Latt +
                       "&date=" +
                       location.Year +
                       "-" +
@@ -48,7 +51,7 @@ namespace satelitesarecool.Controllers
         {
             return View();
         }
-        //TODO: UPDATE SHOWIMAGE UI
+
         public IActionResult ShowImage(Location location)
         {
             return View(location);
