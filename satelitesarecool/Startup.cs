@@ -50,7 +50,7 @@ namespace satelitesarecool
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Earth}/{action=EarthImage}/{id?}");
+                    pattern: "{controller=Earth}/{action=Index}/{id?}");
             });
         }
     }
