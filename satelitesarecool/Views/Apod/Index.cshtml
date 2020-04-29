@@ -1,0 +1,30 @@
+﻿@model satelitesarecool.Models.Apod
+
+@{
+    ViewData["Title"] = "APOD - Astronomic picture of the day";
+}
+
+<div>
+    <h3 class="font-weight-bold">Astronomic picture of the day</h3>
+    <hr />
+    <dl class="row">
+        <dd class="col-sm-10">
+            <h1> @Html.DisplayFor(model => model.Title) </h1>
+        </dd>
+        <dd class="col-sm-10 font-weight-bold">
+            @Html.DisplayFor(model => model.Copyright)
+        </dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Explanation)
+        </dd>
+        <dd class="col-sm-10">
+            <img class="img-fluid" src="@Html.DisplayFor(model => model.Hdurl)" />
+        </dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ServiceVersion)
+        </dd>
+    </dl>
+</div>
