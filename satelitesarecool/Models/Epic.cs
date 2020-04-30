@@ -18,6 +18,7 @@ namespace satelitesarecool.Models
         public AttitudeQuaternions AttitudeQuaternions { get; set; }
         public DateTimeOffset Date { get; set; }
         public Coords Coords { get; set; }
+        public string ImageUrl { get; set; }
     }
 
     public partial class AttitudeQuaternions
