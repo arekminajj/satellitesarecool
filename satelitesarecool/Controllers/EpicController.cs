@@ -17,9 +17,9 @@ namespace satelitesarecool.Controllers
 
             string url = "https://api.nasa.gov/EPIC/api/natural?api_key=DEMO_KEY";
             var response = await client.GetStringAsync(url);
-            var epics = JsonConvert.DeserializeObject<Epic>(response);
+            var epics = JsonConvert.DeserializeObject<List<Epic>>(response);
 
-            return View(epics);
+            return Content(epics.ToArray()[0].Caption);
         }
     }
 }
