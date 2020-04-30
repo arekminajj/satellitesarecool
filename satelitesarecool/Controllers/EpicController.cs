@@ -19,7 +19,7 @@ namespace satelitesarecool.Controllers
             var response = await client.GetStringAsync(url);
             var epics = JsonConvert.DeserializeObject<List<Epic>>(response);
 
-            return Content(epics.ToArray()[0].Caption);
+            return View(epics.ToArray()[0]);
         }
     }
 }
