@@ -14,11 +14,22 @@ namespace satelitesarecool.Controllers
     {
         public IActionResult Index()
         {
-            return RedirectToAction("ChooseSol");
+            
+            return RedirectToAction("Image");
         }
 
-        public async Task<IActionResult> ChooseSol(string solNumber)
+        public IActionResult Photo(string solNumber, string number)
         {
+            return View();
+        }
+
+        public async Task<IActionResult> Image(string solNumber, string number)
+        {
+            //TODO: MAKE INPUT TO ALLOW USER CHANGE SOL AND NUMBER, SINCE ERRORS MAYBE MAKE 1000 and 30 default.
+            //TODO: UPDATE VIEW SO IT SHOW INFO.
+
+            solNumber = "1000";
+            number = "30";
             HttpClient client = new HttpClient();
             string url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=" +
                          solNumber +
@@ -27,7 +38,8 @@ namespace satelitesarecool.Controllers
             var response = await client.GetStringAsync(url);
             var image = JsonConvert.DeserializeObject<Curiosity>(response);
             var rnd = new Random();
-            int random = rnd.Next(1, image.Photos.Length);
+            
+            int random = rnd.Next(1, Int32.Parse(number));
 
             return View(image.Photos[random]);
         }
