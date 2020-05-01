@@ -21,9 +21,9 @@ namespace satelitesarecool.Controllers
             HttpClient client = new HttpClient();
             string url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY";
             var response = await client.GetStringAsync(url);
-            var image = JsonConvert.DeserializeObject<List<Curiosity>>(response);
+            var image = JsonConvert.DeserializeObject<Curiosity>(response);
 
-            return View(image.ToList());
+            return View(image.Photos.ToList());
         }
 
     }
