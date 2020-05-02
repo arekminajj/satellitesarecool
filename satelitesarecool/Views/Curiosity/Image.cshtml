@@ -4,8 +4,20 @@
     ViewData["Title"] = "Curiosity";
 }
 
-    <div>
-        <p class="font-weight-bold">Curiosity</p>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Curiosity" asp-action="Image" method="get">
+            <p style="color: black;">
+                <span class="font-weight-bold">Number of sol:</span> <input class="form-control" type="text" name="solNumber">
+                <span class="font-weight-bold">Number of photo::</span> <input class="form-control" type="text" name="number">
+                <br/>
+                <input class="btn btn-primary" type="submit" value="Get Image!"/>
+            </p>
+        </form>
+    </div>
+</div>
+<div>
+        <h3 class="font-weight-bold">Curiosity</h3>
         <dl class="row">
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Id)
@@ -29,7 +41,7 @@
                 <img class="img-fluid" src="@Html.DisplayFor(model => model.img_src)" alt="@Html.DisplayFor(model => model.EarthDate)" />
             </dd>
         </dl>
-        <p class="font-weight-bold">Rover</p>
+        <h3 class="font-weight-bold">Rover</h3>
         <dl class="row">
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Rover.Id)
