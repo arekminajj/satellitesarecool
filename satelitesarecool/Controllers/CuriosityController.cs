@@ -14,7 +14,6 @@ namespace satelitesarecool.Controllers
     {
         public IActionResult Index()
         {
-            
             return RedirectToAction("Image");
         }
 
@@ -26,7 +25,6 @@ namespace satelitesarecool.Controllers
         public async Task<IActionResult> Image(string solNumber, string number)
         {
             //TODO: MAKE INPUT TO ALLOW USER CHANGE SOL AND NUMBER, SINCE ERRORS MAYBE MAKE 1000 and 30 default.
-            //TODO: UPDATE VIEW SO IT SHOW INFO.
 
             solNumber = "1000";
             number = "30";
